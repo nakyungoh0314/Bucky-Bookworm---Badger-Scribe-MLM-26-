@@ -1,53 +1,50 @@
 # Contributing to Badger Scribe
 
-Our goal is to keep `main` stable, reviewable, and easy for four people—and
-their coding agents—to share.
+Keep `main` stable and reviewable for the four contributors and their coding
+agents.
 
 ## Branches and pull requests
 
-- Never work directly on `main`. Use `firstname/short-purpose` branches, such
-  as `nakyungoh/add-ingestion-tests` or `chloe/fix-login`.
-- Keep a pull request focused on one user-visible change, bug fix, refactor,
-  or documentation update. Prefer a reviewable change that takes about 15
-  minutes to understand; split unrelated work into separate PRs.
-- Open the PR against `main`, describe the behavior changed, and include
-  validation steps or explain why none apply. Keep PRs draft until the change
-  is ready for review.
-- Every PR needs one teammate review. Changes to shared interfaces, workflows,
-  or security-sensitive code need two reviewers, including an owner of the
-  affected area when one exists.
+- Never work directly on `main`. Use `<name>/<short-purpose>`, for example
+  `nakyungoh/add-ingestion-tests` or `chloe/fix-login`.
+- Keep each PR to one coherent feature, fix, refactor, or documentation change.
+  Split unrelated work. A reviewer should be able to understand the change in
+  about 15 minutes.
+- Target `main`, describe the behavior changed, and include checks run (or why
+  none apply). Use draft status until the PR is ready.
+- Every PR needs one teammate review. Shared interfaces, workflows, and
+  security-sensitive changes need two reviewers, including an area owner when
+  one exists.
 
 ## Working with coding agents
 
-- An agent may edit files within the task's owned area, add tests and
-  documentation for that change, and run the project checks without asking.
-  It must not change another contributor's branch, rewrite history, commit
-  secrets, or make unrelated cleanup changes.
-- Before starting, claim the files or area in the PR description or team
-  channel. If another agent has claimed a file, coordinate first; do not
-  edit it concurrently.
-- Prefer one agent per file for a task. For shared files (dependency manifests,
-  lockfiles, CI configuration, routing, and top-level documentation), agree
-  on an owner and integrate changes sequentially.
-- If the task expands beyond its claimed area, or a design choice affects
-  another contributor's work, stop and ask the team before editing.
+- An agent may edit its claimed files, add related tests or documentation, and
+  run checks without asking. It must not edit another branch, rewrite history,
+  commit secrets, or make unrelated cleanup changes.
+- Before editing, claim the files or area in the PR description or team
+  channel. If another agent has claimed a file, coordinate first; never edit
+  the same file concurrently.
+- Use one agent per file where possible. Assign an owner and integrate
+  sequentially for shared files such as manifests, lockfiles, CI, routing, and
+  top-level documentation.
+- Stop and ask before expanding beyond the claim or making a design choice
+  that affects another contributor's work.
 
 ## Commits
 
-Use imperative, specific commit subjects:
+Use small, buildable commits with imperative subjects:
 
 ```text
 Add document ingestion endpoint
 Fix empty search result handling
 ```
 
-Keep commits small and buildable. Put the issue or PR reference in the body
-when useful, and explain the reason for a non-obvious change. Do not combine
-formatting churn with functional changes.
+Keep formatting-only churn separate. Put an issue or PR reference in the body
+when useful, and explain non-obvious decisions.
 
 ## Repository layout
 
-Put new files in the directory that matches their responsibility:
+Place new files with the responsibility they serve:
 
 ```text
 src/                 application code
@@ -59,7 +56,6 @@ README.md            project overview and quick start
 CONTRIBUTING.md      contribution rules
 ```
 
-Keep configuration at the repository root only when the tool requires it
-(for example, a package manifest or formatter configuration). Create a
-focused subdirectory before adding a new category of files, and update this
-layout when the project grows.
+Keep tool-required configuration at the root (for example, a package manifest
+or formatter config). Create a focused directory before adding a new category
+of files, and update this map when the project grows.
